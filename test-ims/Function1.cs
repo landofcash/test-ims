@@ -125,7 +125,8 @@ namespace test_ims
                     List<Bitmap> bitmaps = new List<Bitmap>();
                     for (int pageNumber = startPage; pageNumber <= rasterizer.PageCount && pageNumber<startPage+pagesToTake; pageNumber++)
                     {
-                        var image = await Task.Run(() => (Bitmap) rasterizer.GetPage(dpi, pageNumber));
+                        //var image = await Task.Run(() => (Bitmap) rasterizer.GetPage(dpi, pageNumber));
+                        var image = (Bitmap) rasterizer.GetPage(dpi, pageNumber);
                         bitmaps.Add(image);
                     }
                     return bitmaps;
