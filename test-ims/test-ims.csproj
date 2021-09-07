@@ -5,7 +5,21 @@
     <RootNamespace>test_ims</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="dll\gsdll64.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\gsdll64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.13" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Ghostscript.NET.Core">
+      <HintPath>..\..\IMSParamed.BulkForms.Processing.Outbound\IMSParamed.BulkForms.Processing.Outbound.Functions\dll\Ghostscript.Net.Core\Ghostscript.NET.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
