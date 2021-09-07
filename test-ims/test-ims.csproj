@@ -18,7 +18,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Ghostscript.NET.Core">
-      <HintPath>..\..\IMSParamed.BulkForms.Processing.Outbound\IMSParamed.BulkForms.Processing.Outbound.Functions\dll\Ghostscript.Net.Core\Ghostscript.NET.Core.dll</HintPath>
+      <HintPath>dll\Ghostscript.Net.Core\Ghostscript.NET.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
