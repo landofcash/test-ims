@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 namespace test_ims
 {
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Drawing;
     using Ghostscript.NET;
     using Ghostscript.NET.Rasterizer;
@@ -126,9 +127,9 @@ namespace test_ims
                     for (int pageNumber = startPage; pageNumber <= rasterizer.PageCount && pageNumber<startPage+pagesToTake; pageNumber++)
                     {
                         //var image = await Task.Run(() => (Bitmap) rasterizer.GetPage(dpi, pageNumber));
-                        Logger.LogError($"Calling rasterizer.GetPage. dpi:{dpi}, pageNumber:{pageNumber}");
+                        Logger.LogInformation($"Calling rasterizer.GetPage. dpi:{dpi}, pageNumber:{pageNumber}");
                         var image = (Bitmap) rasterizer.GetPage(dpi, pageNumber);
-                        Logger.LogError($"Calling rasterizer.GetPage Done.");
+                        Logger.LogInformation($"Calling rasterizer.GetPage Done. image:{image.Size} - {image.PixelFormat} WorkingSet64:{Process.GetCurrentProcess().WorkingSet64}");
                         bitmaps.Add(image);
                     }
                     return bitmaps;
