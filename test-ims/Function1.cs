@@ -126,7 +126,9 @@ namespace test_ims
                     for (int pageNumber = startPage; pageNumber <= rasterizer.PageCount && pageNumber<startPage+pagesToTake; pageNumber++)
                     {
                         //var image = await Task.Run(() => (Bitmap) rasterizer.GetPage(dpi, pageNumber));
+                        Logger.LogError($"Calling rasterizer.GetPage. dpi:{dpi}, pageNumber:{pageNumber}");
                         var image = (Bitmap) rasterizer.GetPage(dpi, pageNumber);
+                        Logger.LogError($"Calling rasterizer.GetPage Done.");
                         bitmaps.Add(image);
                     }
                     return bitmaps;
