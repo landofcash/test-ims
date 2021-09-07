@@ -39,10 +39,13 @@ namespace test_ims
                     int pagesTotal = helper.PdfPagesCount(ms);
                     res.Add($"INFO: PagesTotal:{pagesTotal}");
                     var images = await helper.GetPagesBitmapsFromPdf(ms, 1,pagesTotal,200);
+                    res.Add($"INFO: All Done");
+                    /*
                     foreach (Bitmap image in images)
                     {
                         res.Add($"Page image created. Width:{image.Width}, Height:{image.Height}");
                     }
+                    */
                 }
             }
             catch (Exception ex)
@@ -123,16 +126,16 @@ namespace test_ims
                         return new List<Bitmap>();
                     }
 
-                    List<Bitmap> bitmaps = new List<Bitmap>();
+                    //List<Bitmap> bitmaps = new List<Bitmap>();
                     for (int pageNumber = startPage; pageNumber <= rasterizer.PageCount && pageNumber<startPage+pagesToTake; pageNumber++)
                     {
                         //var image = await Task.Run(() => (Bitmap) rasterizer.GetPage(dpi, pageNumber));
                         Logger.LogInformation($"Calling rasterizer.GetPage. dpi:{dpi}, pageNumber:{pageNumber}");
-                        var image = (Bitmap) rasterizer.GetPage(dpi, pageNumber);
+                        var image = rasterizer.GetPage(dpi, pageNumber);
                         Logger.LogInformation($"Calling rasterizer.GetPage Done. image:{image.Size} - {image.PixelFormat} WorkingSet64:{Process.GetCurrentProcess().WorkingSet64}");
-                        bitmaps.Add(image);
+                        //bitmaps.Add(image);
                     }
-                    return bitmaps;
+                    return null;
                 }
             }
             catch (Exception ex)
